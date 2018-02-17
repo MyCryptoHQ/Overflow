@@ -1,0 +1,57 @@
+{
+  "name": "react-typescript-web3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^3.1.3"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.38",
+    "@types/react-dom": "^16.0.4",
+    "@types/react-hot-loader": "^3.0.6",
+    "@types/webpack-env": "^1.13.5",
+    "chalk": "^2.3.1",
+    "clean-webpack-plugin": "^0.1.18",
+    "css-loader": "^0.28.9",
+    "express": "^4.16.2",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.2",
+    "resolve-url-loader": "^2.2.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.2",
+    "ts-loader": "^3.5.0",
+    "typescript": "^2.7.2",
+    "uglifyjs-webpack-plugin": "^1.2.0",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1",
+    "webpack-hot-middleware": "^2.21.0",
+    "webpack-merge": "^4.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --config ./webpack_config/webpack.dev.js",
+    "build": "webpack --config webpack_config/webpack.prod.js"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write --config ./.prettierrc --config-precedence file-override",
+      "git add"
+    ]
+  },
+  "prepush": "npm run tslint && npm run tscheck",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MyCryptoHQ/React-Typescript-Web3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MyCryptoHQ/React-Typescript-Web3/issues"
+  },
+  "homepage": "https://github.com/MyCryptoHQ/React-Typescript-Web3#readme"
+}
