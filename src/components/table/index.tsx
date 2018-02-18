@@ -8,10 +8,8 @@ interface PTable {
 }
 
 const StyledTable = styled.div`
-  width: inherit;
-  > div {
-    max-height: 747px;
-  }
+  max-height: 648px;
+  overflow: scroll;
 `;
 
 import { store, RPCNode } from 'balancer';
@@ -25,7 +23,7 @@ export class Table extends React.Component<PTable> {
     window.setTimeout(async () => {
       addresses.addresses.forEach(async (addr: any) => {
         const balance = await node.getBalance(addr);
-        console.log("balance", balance.toString());
+        console.log('balance', balance.toString());
         this.setState({ addr: 'complete' });
       });
     }, 3000);
