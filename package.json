@@ -6,8 +6,6 @@
   "dependencies": {
     "@types/react-table": "^6.7.3",
     "ethereum-blockies": "git+https://github.com/MyCryptoHQ/blockies.git",
-    "hyz-shepherd": "0.0.1",
-    "myc-shepherd": "0.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^3.1.3",

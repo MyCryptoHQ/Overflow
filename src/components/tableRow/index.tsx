@@ -3,13 +3,10 @@ import styled from 'styled-components';
 import { FlexSpacer } from 'components/shared/flex-spacer';
 import { LinearProgress } from 'components/shared/linearProgress';
 import { toDataUrl } from 'ethereum-blockies';
+import * as triangleRight from 'assets/imgs/triangle-right.svg';
+import * as triangleDown from 'assets/imgs/triangle-down.svg';
 
 type Status = 'complete' | 'pending' | 'failed' | null;
-
-interface PTableRow {
-  addr: string;
-  status: Status;
-}
 
 const StyledTableRow = styled.div`
   display: flex;
@@ -77,19 +74,56 @@ const AddrWrapper = styled.div`
   width: inherit;
 `;
 
-export const TableRow: React.SFC<PTableRow> = props => (
-  <React.Fragment>
-    <StyledTableRow>
-      <WalletWrapper>
-        <Icon addr={props.addr} />
-        <AddrWrapper>
-          {props.addr}
-          {props.status === 'pending' && <LinearProgress />}
-        </AddrWrapper>
-      </WalletWrapper>
-      <FlexSpacer />
-      <Status status={props.status}>{props.status}</Status>
-    </StyledTableRow>
-    {props.status === 'complete' && <SubComponent />}
-  </React.Fragment>
-);
+const StyledArrow = styled.img`
+  padding: 16px;
+  margin-right: 16px;
+`;
+
+const Arrow: React.SFC<{ open: boolean }> = props => {
+  const src = props.open ? triangleDown : triangleRight;
+  return <StyledArrow src={src as any} />;
+};
+
+interface Props {
+  addr: string;
+  status: Status;
+}
+
+interface State {
+  open: boolean;
+}
+
+export class TableRow extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { open: false };
+  }
+
+  handleClick(status: Status): any {
+    if (status === 'complete') {
+      this.setState({ open: !this.state.open });
+    }
+  }
+
+  render() {
+    const { addr, status } = this.props;
+    const { open } = this.state;
+    return (
+      <React.Fragment>
+        <StyledTableRow onClick={() => this.handleClick(status)}>
+          {status === 'complete' && <Arrow open={open} />}
+          <WalletWrapper>
+            <Icon addr={addr} />
+            <AddrWrapper>
+              {addr}
+              {status === 'pending' && <LinearProgress />}
+            </AddrWrapper>
+          </WalletWrapper>
+          <FlexSpacer />
+          <Status status={status}>{status}</Status>
+        </StyledTableRow>
+        {status === 'complete' && open && <SubComponent />}
+      </React.Fragment>
+    );
+  }
+}
