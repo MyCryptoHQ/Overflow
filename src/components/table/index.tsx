@@ -17,7 +17,10 @@ import { getNodeCallByPayload, NodeCall } from 'balancer/ducks/nodeBalancer/node
 let node = RPCNode('');
 
 export class Table extends React.Component<PTable> {
-  public state = addresses.addresses.reduce((accu, curr) => ({ ...accu, [curr]: 'pending' }), {});
+  public state = addresses.addresses.reduce(
+    (accu, curr) => ({ ...accu, [curr]: {"status": 'pending', nodeId: null, balance: null} }),
+    {}
+  );
 
   public componentDidMount() {
     addresses.addresses.forEach(async (addr: any) => {
@@ -25,8 +28,7 @@ export class Table extends React.Component<PTable> {
         const balance = await node.getBalance(addr);
         const state = store.getState();
         const { nodeId }: NodeCall = getNodeCallByPayload(state, addr);
-
-        this.setState({ [addr]: 'complete' });
+        this.setState({ [addr]: {status: "complete", nodeId: nodeId, balance: balance.toString() }});
       } catch (e) {
         this.setState({ [addr]: 'failed' });
       }
@@ -38,7 +40,12 @@ export class Table extends React.Component<PTable> {
     return (
       <StyledTable>
         {addresses.addresses.map((addr, i) => {
-          return i < 10 && <TableRow key={addr} addr={addr} status={this.state[addr]} />;
+          return i < 15 && <TableRow
+            key={addr}
+            addr={addr}
+            balance={this.state[addr]["balance"]}
+            node={this.state[addr]["nodeId"]}
+            status={this.state[addr]["status"]} />;
         })}
       </StyledTable>
     );
