@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { TableRow } from 'components/tableRow';
+const addresses = require('assets/json/addresses.json');
 
 interface PTable {
   data: any;
@@ -13,14 +14,29 @@ const StyledTable = styled.div`
   }
 `;
 
+import { store, RPCNode } from 'balancer';
+
+let node = RPCNode('');
+
 export class Table extends React.Component<PTable> {
+  public state = addresses.addresses.reduce((accu, curr) => ({ ...accu, [curr]: 'pending' }), {});
+
+  public componentDidMount = async () => {
+    window.setTimeout(async () => {
+      addresses.addresses.forEach(async (addr: any) => {
+        const balance = await node.getBalance(addr);
+        console.log("balance", balance.toString());
+        this.setState({ addr: 'complete' });
+      });
+    }, 3000);
+  };
+
   render() {
     return (
       <StyledTable>
-        <TableRow addr={'0x0a6d9df476577c0d4a24eb50220fad007e444db8'} status={'pending'} />
-        <TableRow addr={'0x61edcdf5bb737adffe5043706e7c5bb1f1a56eea'} status={'failed'} />
-        <TableRow addr={'0xf4b51b14b9ee30dc37ec970b50a486f37686e2a8'} status={'complete'} />
-        <TableRow addr={'0xf27daff52c38b2c373ad2b9392652ddf433303c4'} status={null} />
+        {addresses.addresses.map(addr => {
+          return <TableRow key={addr} addr={addr} status={this.state[addr]} />;
+        })}
       </StyledTable>
     );
   }
