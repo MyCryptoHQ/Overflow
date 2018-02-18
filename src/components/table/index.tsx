@@ -8,8 +8,7 @@ interface PTable {
 }
 
 const StyledTable = styled.div`
-  max-height: 648px;
-  overflow: scroll;
+  width: inherit;
 `;
 
 import { store, RPCNode } from 'balancer';
@@ -32,8 +31,8 @@ export class Table extends React.Component<PTable> {
   render() {
     return (
       <StyledTable>
-        {addresses.addresses.map(addr => {
-          return <TableRow key={addr} addr={addr} status={this.state[addr]} />;
+        {addresses.addresses.map((addr, i) => {
+          return i < 10 && <TableRow key={addr} addr={addr} status={this.state[addr]} />;
         })}
       </StyledTable>
     );
