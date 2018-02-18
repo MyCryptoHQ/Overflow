@@ -11,7 +11,6 @@
     "ethereumjs-util": "^5.1.4",
     "hyz-shepherd": "0.0.7",
     "jsonschema": "^1.2.2",
-    "myc-shepherd": "0.0.1",
     "randombytes": "^2.0.6",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

@@ -37,7 +37,7 @@ const StyledBlockie = styled.img`
   border-radius: 5px;
   height: 48px;
   width: 48px;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 725px) {
     height: 24px;
     width: 24px;
   }
@@ -88,7 +88,7 @@ const StyledArrow = styled.img`
   padding: 16px;
   margin-right: 16px;
   box-sizing: content-box;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 725px) {
     padding: 8px;
     height: 12px;
     width: 12px;
