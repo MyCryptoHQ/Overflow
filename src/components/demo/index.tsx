@@ -15,6 +15,6 @@ const StyledDemo = styled.div`
 
 export const Demo = (props: any) => (
   <StyledDemo>
-    <Table started={props.started} reset={props.reset} />
+    <Table started={props.started} addresses={props.addresses} />
   </StyledDemo>
 );

@@ -6,7 +6,11 @@ import { Demo } from 'components/demo';
 import { Link } from 'components/shared/link';
 import { Panels } from 'components/panels';
 import { FlexSpacer } from '../shared/flex-spacer';
+import { getNodeCallByPayload, NodeCall } from '../../balancer/ducks/nodeBalancer/nodeCalls';
+import { RPCNode, store } from 'balancer';
+const addresses = require('assets/json/addresses.json');
 
+let node = RPCNode('');
 const Section = styled.div`
   margin-top: 16px;
   padding: 0px 32px;
@@ -63,17 +67,57 @@ const StyledInlineCode = styled.span`
 `;
 
 class DemoInfo extends React.Component<any, any> {
-  state = {
-    disabled: false,
-    reset: false
+  public state = {
+    addresses: addresses.addresses.reduce(
+      (accu, curr) => ({ ...accu, [curr]: { status: null, nodeId: null, balance: null } }),
+      {}
+    ),
+    disabled: false
   };
 
   toggleDisabled() {
-    this.setState({ disabled: !this.state.disabled });
+    this.setState({
+      disabled: !this.state.disabled,
+      addresses: addresses.addresses.reduce(
+        (accu, curr) => ({ ...accu, [curr]: { status: 'pending', nodeId: null, balance: null } }),
+        {}
+      )
+    });
+    setTimeout(() => {
+      addresses.addresses.forEach(async (addr: string) => {
+        try {
+          this.setState({
+            ...this.state,
+            addresses: {
+              ...this.state.addresses,
+              [addr]: { status: 'pending' }
+            }
+          });
+          const balance = await node.getBalance(addr);
+          const state = store.getState();
+          const { nodeId }: NodeCall = getNodeCallByPayload(state, addr);
+          this.setState({
+            ...this.state,
+            addresses: {
+              ...this.state.addresses,
+              [addr]: { status: 'complete', nodeId: nodeId, balance: balance.toString() }
+            }
+          });
+        } catch (e) {
+          this.setState({ [addr]: { status: 'failed' } });
+        }
+      });
+    }, 1500);
   }
 
   reset() {
-    this.setState({ disabled: false });
+    this.setState({
+      disabled: false,
+      addresses: addresses.addresses.reduce(
+        (accu, curr) => ({ ...accu, [curr]: { status: null, nodeId: null, balance: null } }),
+        {}
+      )
+    });
   }
 
   render() {
@@ -99,7 +143,7 @@ class DemoInfo extends React.Component<any, any> {
           </BtnWrapper>
         </StyledDemoInfoWrapper>
         <DemoWrapper>
-          <Demo started={this.state.disabled} reset={this.state.reset} />
+          <Demo started={this.state.disabled} addresses={this.state.addresses} />
         </DemoWrapper>
       </React.Fragment>
     );
