@@ -46,7 +46,7 @@ const Card = styled.div`
 export const Panels: React.SFC = () => (
   <StyledWrapper>
     <Card>
-      <Title>Shepherd</Title>
+      <Title>shepherd</Title>
       <Subheading>client-side JSON-RPC node²-balancing</Subheading>
       <FlexSpacer />
       <Link href="https://github.com/MyCryptoHQ/shepherd">Github</Link>
@@ -64,7 +64,7 @@ export const Panels: React.SFC = () => (
       <Link href="https://github.com/MyCryptoHQ/typ3-cli">Github</Link>
     </Card>
     <Card>
-      <Title>Drawbridge</Title>
+      <Title>drawbridge</Title>
       <Subheading>SPA release management and verification</Subheading>
       <FlexSpacer />
       <Link href="https://github.com/MyCryptoHQ/drawbridge">Github</Link>

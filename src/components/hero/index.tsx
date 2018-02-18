@@ -75,7 +75,7 @@ class DemoInfo extends React.Component<any, any> {
           <Copy>
             <Display4>Shepherd Demo</Display4>
             <Subheading marginAuto={true}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry
+              Click "start" to begin a node-balanced `getBalance` call for each account address. Open up redux developer tools to view shepherd balancing JSON-RPC calls in real-time.
             </Subheading>
           </Copy>
           <FlexSpacer />
@@ -103,7 +103,7 @@ export const Hero = () => (
       <Subheading marginAuto={true}>
         A platform for developer tooling. <br />We’re publishing{' '}
         <Link href="https://www.npmjs.com/~mycrypto-admin"> npm </Link> packages based on internal
-        tooling we've developed over the last year rebuilding{' '}
+        tooling we've developed over the last year of rebuilding{' '}
         <Link href="https://mycrypto.com">MyCrypto.com</Link>.
       </Subheading>
     </Section>
