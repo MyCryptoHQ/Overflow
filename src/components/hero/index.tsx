@@ -54,6 +54,14 @@ const BtnWrapper = styled.div`
   }
 `;
 
+const StyledInlineCode = styled.span`
+  font-family: 'Roboto Mono';
+  color: #0090ff;
+  background-color: #e5ecf3;
+  padding: 2px 6px;
+  border-radius: 3px;
+`;
+
 class DemoInfo extends React.Component<any, any> {
   state = {
     disabled: false,
@@ -75,7 +83,9 @@ class DemoInfo extends React.Component<any, any> {
           <Copy>
             <Display4>Shepherd Demo</Display4>
             <Subheading marginAuto={true}>
-              Click "start" to begin a node-balanced `getBalance` call for each account address. Open up redux developer tools to view shepherd balancing JSON-RPC calls in real-time.
+              Click "start" to begin a node-balanced <StyledInlineCode>getBalance</StyledInlineCode>{' '}
+              call for each account address. Open up redux developer tools to view shepherd
+              balancing JSON-RPC calls in real-time.
             </Subheading>
           </Copy>
           <FlexSpacer />
