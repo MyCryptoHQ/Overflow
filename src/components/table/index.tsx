@@ -11,7 +11,8 @@ const StyledTable = styled.div`
   width: inherit;
 `;
 
-import { RPCNode } from 'balancer';
+import { RPCNode, store } from 'balancer';
+import { getNodeCallByPayload, NodeCall } from 'balancer/ducks/nodeBalancer/nodeCalls';
 
 let node = RPCNode('');
 
@@ -22,6 +23,9 @@ export class Table extends React.Component<PTable> {
     addresses.addresses.forEach(async (addr: any) => {
       const balance = await node.getBalance(addr);
       console.log('balance', balance.toString());
+      const state = store.getState();
+      const x: NodeCall = getNodeCallByPayload(state, addr);
+      console.log(x.nodeId);
       this.setState({ addr: 'complete' });
     });
   };

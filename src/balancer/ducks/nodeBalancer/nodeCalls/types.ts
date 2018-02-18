@@ -10,7 +10,7 @@ export enum NODE_CALL {
   REQUESTED = 'NODE_CALL_REQUESTED',
   TIMEOUT = 'NODE_CALL_TIMEOUT',
   SUCCEEDED = 'NODE_CALL_SUCCEEDED',
-  FAILED = 'NODE_CALL_FAILED',
+  FAILED = 'NODE_CALL_FAILED'
 }
 
 export interface NodeCall {
@@ -20,6 +20,7 @@ export interface NodeCall {
   numOfTimeouts: number;
   minPriorityNodeList: AllNodeIds[];
   nodeWhiteList?: AllNodeIds[];
+  nodeId?: string;
 }
 
 export interface SuccessfulNodeCall extends NodeCall {
