@@ -5,6 +5,7 @@ const addresses = require('assets/json/addresses.json');
 
 interface PTable {
   data: any;
+  started: boolean;
 }
 
 const StyledTable = styled.div`
@@ -18,13 +19,16 @@ let node = RPCNode('');
 
 export class Table extends React.Component<PTable> {
   public state = addresses.addresses.reduce(
-    (accu, curr) => ({ ...accu, [curr]: { status: 'pending', nodeId: null, balance: null } }),
+    (accu, curr) => ({ ...accu, [curr]: { status: null, nodeId: null, balance: null } }),
     {}
   );
 
   public componentDidMount() {
-    addresses.addresses.forEach(async (addr: any) => {
+    addresses.addresses.forEach(async (addr: string) => {
       try {
+        this.setState({
+          [addr]: { status: 'pending' }
+        });
         const balance = await node.getBalance(addr);
         const state = store.getState();
         const { nodeId }: NodeCall = getNodeCallByPayload(state, addr);

@@ -17,12 +17,9 @@ export interface RootState {
 export const rootReducer = combineReducers({
   networkConfigs,
   nodeBalancer,
-  nodeConfigs,
+  nodeConfigs
 });
 
-export const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(sagaMiddleware)),
-);
+export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
 
 sagaMiddleware.run(nodeBalancerSaga);
