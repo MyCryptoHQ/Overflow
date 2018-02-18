@@ -2,12 +2,13 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Title, Subheading } from 'components/shared/typography';
 import { Link } from 'components/shared/link';
+import { FlexSpacer } from '../shared/flex-spacer';
 
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 1250px) {
     flex-wrap: wrap;
   }
   z-index: 1;
@@ -15,6 +16,8 @@ const StyledWrapper = styled.div`
 `;
 
 const Card = styled.div`
+  display: flex;
+  flex-direction: column;
   text-align: left;
   background: #fff;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.05);
@@ -22,6 +25,7 @@ const Card = styled.div`
   border-radius: 5px;
   margin: 16px;
   padding: 16px;
+  padding-bottom: 8px;
   max-width: 300px;
   > h6 {
     margin: 0;
@@ -30,36 +34,38 @@ const Card = styled.div`
   > p {
     margin-bottom: 0;
     padding-bottom: 8px;
-    border-bottom: 1px solid #e5ecf3;
   }
   > a {
+    border-top: 1px solid #e5ecf3;
     display: block;
     text-align: center;
-    margin-top: 8px;
-    padding: 0px 16px;
+    padding: 8px 16px;
   }
 `;
 
 export const Panels: React.SFC = () => (
   <StyledWrapper>
-      <Card>
-          <Title>Shepherd</Title>
-          <Subheading>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </Subheading>
-          <Link href="/">Github</Link>
-      </Card>
+    <Card>
+      <Title>Shepherd</Title>
+      <Subheading>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </Subheading>
+      <FlexSpacer />
+      <Link href="/">Github</Link>
+    </Card>
     <Card>
       <Title>typ3</Title>
       <Subheading>
         Dynamically construct a fully-typed object representation of any given ABI, including
         methods for encoding, decoding, and calling the contract
       </Subheading>
+      <FlexSpacer />
       <Link href="/">Github</Link>
     </Card>
     <Card>
       <Title>typ3-cli</Title>
       <Subheading>Auto-generate Typescript declaration files from ABI JSON.</Subheading>
+      <FlexSpacer />
       <Link href="/">Github</Link>
     </Card>
     <Card>
@@ -67,6 +73,7 @@ export const Panels: React.SFC = () => (
       <Subheading>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </Subheading>
+      <FlexSpacer />
       <Link href="/">Github</Link>
     </Card>
   </StyledWrapper>
