@@ -108,7 +108,7 @@ function* networkSwitch(): SagaIterator {
       isCustom: nodeConfig.isCustom,
       timeoutThresholdMs: 2000,
       currWorkersById: [],
-      maxWorkers: 4,
+      maxWorkers: 100,
       requestFailures: 0,
       requestFailureThreshold: 2,
       supportedMethods: {
@@ -309,7 +309,7 @@ function* spawnWorker(thisId: string, nodeId: string, chan: IChannels[string]) {
         throw createInternalError(`Request timed out for ${nodeId}`);
       }
       console.log('Finished', thisId, payload.callId);
-      yield put(nodeCallSucceeded({ result, nodeCall: payload }));
+      yield put(nodeCallSucceeded({ result, nodeCall: { ...payload, nodeId: thisId } }));
     } catch (error) {
       const e: Error = error;
       if (!(e.name === 'InternalError')) {

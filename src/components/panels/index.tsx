@@ -48,33 +48,32 @@ export const Panels: React.SFC = () => (
     <Card>
       <Title>Shepherd</Title>
       <Subheading>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          client-side JSON-RPC node²-balancing
       </Subheading>
       <FlexSpacer />
-      <Link href="/">Github</Link>
+      <Link href="https://github.com/MyCryptoHQ/shepherd">Github</Link>
     </Card>
     <Card>
       <Title>typ3</Title>
       <Subheading>
-        Dynamically construct a fully-typed object representation of any given ABI, including
-        methods for encoding, decoding, and calling the contract
+        typesafe smart contract interaction
       </Subheading>
       <FlexSpacer />
-      <Link href="/">Github</Link>
+      <Link href="https://github.com/MyCryptoHQ/typ3">Github</Link>
     </Card>
     <Card>
       <Title>typ3-cli</Title>
-      <Subheading>Auto-generate Typescript declaration files from ABI JSON.</Subheading>
+      <Subheading>auto-generate typescript declaration files</Subheading>
       <FlexSpacer />
-      <Link href="/">Github</Link>
+      <Link href="https://github.com/MyCryptoHQ/typ3-cli">Github</Link>
     </Card>
     <Card>
       <Title>Drawbridge</Title>
       <Subheading>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          SPA release management and verification
       </Subheading>
       <FlexSpacer />
-      <Link href="/">Github</Link>
+      <Link href="https://github.com/MyCryptoHQ/drawbridge">Github</Link>
     </Card>
   </StyledWrapper>
 );
