@@ -32,15 +32,12 @@ export const Nav = () => (
   <Navigation>
     <li>
       <NavLink href="/" primary={true}>
-        Shepherd
+        Overflow
       </NavLink>
     </li>
     <FlexSpacer />
     <li>
-      <NavLink href="/">Documentation</NavLink>
-    </li>
-    <li>
-      <NavLink href="/">Github</NavLink>
+      <NavLink href="https://github.com/mycryptohq">GitHub</NavLink>
     </li>
   </Navigation>
 );
