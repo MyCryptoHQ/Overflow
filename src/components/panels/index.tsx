@@ -29,7 +29,7 @@ const Card = styled.div`
   max-width: 300px;
   > h6 {
     margin: 0;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
   > p {
     margin-bottom: 0;
@@ -47,17 +47,13 @@ export const Panels: React.SFC = () => (
   <StyledWrapper>
     <Card>
       <Title>Shepherd</Title>
-      <Subheading>
-          client-side JSON-RPC node²-balancing
-      </Subheading>
+      <Subheading>client-side JSON-RPC node²-balancing</Subheading>
       <FlexSpacer />
       <Link href="https://github.com/MyCryptoHQ/shepherd">Github</Link>
     </Card>
     <Card>
       <Title>typ3</Title>
-      <Subheading>
-        typesafe smart contract interaction
-      </Subheading>
+      <Subheading>typesafe smart contract interaction</Subheading>
       <FlexSpacer />
       <Link href="https://github.com/MyCryptoHQ/typ3">Github</Link>
     </Card>
@@ -69,9 +65,7 @@ export const Panels: React.SFC = () => (
     </Card>
     <Card>
       <Title>Drawbridge</Title>
-      <Subheading>
-          SPA release management and verification
-      </Subheading>
+      <Subheading>SPA release management and verification</Subheading>
       <FlexSpacer />
       <Link href="https://github.com/MyCryptoHQ/drawbridge">Github</Link>
     </Card>
