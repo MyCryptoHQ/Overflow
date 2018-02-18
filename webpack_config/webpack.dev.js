@@ -12,7 +12,7 @@ const config = merge(common, {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.scss$|\.css$/,
         use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
       }
     ]
