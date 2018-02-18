@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import * as img from 'assets/imgs/triangle-down.svg';
 import { PrimaryButton, SecondaryButton } from 'components/shared/button';
 import { Display4, Subheading } from 'components/shared/typography';
 import { Demo } from 'components/demo';
@@ -18,7 +17,6 @@ const Section = styled.div`
 
 const HeroImg = styled.div`
   position: relative;
-  background: url(${img}) top center no-repeat;
   display: flex;
   justify-content: center;
   margin-top: -64px;
