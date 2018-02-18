@@ -27,13 +27,14 @@ const Demo = styled.div`
   width: 100%;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1), inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
   height: 800px;
-  max-width: 784px;
+  max-width: 944px;
   padding: 32px;
   margin: 32px;
+  margin-bottom: 96px;
   margin-top: 192px;
-  border: 1px solid #00000019;
+  border: 1px solid #e5e5e5;
 `;
 
 export const Hero = () => (

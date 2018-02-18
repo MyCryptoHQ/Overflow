@@ -4,7 +4,7 @@ export const Button = styled.a`
   display: inline-block;
   font-size: 16px;
   font-weight: 400;
-  padding: 16px 24px;
+  padding: 12px 24px;
   border: none;
   background: transparent;
   border-radius: 5px;
@@ -25,8 +25,7 @@ export const PrimaryButton = styled(Button)`
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1), inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
   &:hover {
     color: white;
-    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2),
-      inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
   }
   &:active {
     transform: translateY(1px);
@@ -39,8 +38,7 @@ export const SecondaryButton = styled(Button)`
   border: 1px solid #0090ff;
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1), inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
   &:hover {
-    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2),
-      inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
   }
   &:active {
     transform: translateY(1px);
