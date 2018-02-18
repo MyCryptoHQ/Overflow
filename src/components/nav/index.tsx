@@ -13,9 +13,12 @@ const FlexSpacer = styled.div`
   flex-grow: 1;
 `;
 
+interface PNavLink {
+  primary?: boolean;
+}
 const NavLink = styled.a`
   display: block;
-  color: ${props => (props.primary && '#0090ff') || 'hsla(209, 16%, 74%, 0.87)'};
+  color: ${(props: PNavLink) => (props.primary && '#0090ff') || 'hsla(209, 16%, 74%, 0.87)'};
   font-size: 16px;
   font-weight: 500;
   padding: 24px 16px;
