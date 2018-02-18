@@ -18,15 +18,19 @@ let node = RPCNode('');
 export class Table extends React.Component<PTable> {
   public state = addresses.addresses.reduce((accu, curr) => ({ ...accu, [curr]: 'pending' }), {});
 
-  public componentDidMount = async () => {
+  public componentDidMount () {
     addresses.addresses.forEach(async (addr: any) => {
-      const balance = await node.getBalance(addr);
-      console.log('balance', balance.toString());
-      this.setState({ addr: 'complete' });
+      try {
+        const balance = await node.getBalance(addr);
+        this.setState({ [addr]: 'complete' });
+      } catch (e) {
+        this.setState({ [addr]: 'failed' });
+      }
     });
   };
 
   render() {
+    console.log(this.state);
     return (
       <StyledTable>
         {addresses.addresses.map((addr, i) => {
