@@ -1,18 +1,18 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { LeftAlignCard } from 'components/shared/cards';
+import { LeftAlignBlock } from 'components/shared/blocks';
 import { Headline, Subheading } from 'components/shared/typography';
 
 const Title = styled(Headline)``;
 
 export const Info = () => (
   <React.Fragment>
-    <LeftAlignCard>
+    <LeftAlignBlock>
       <Title>Built For Performance</Title>
       <Subheading>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is
         the industry's standard
       </Subheading>
-    </LeftAlignCard>
+    </LeftAlignBlock>
   </React.Fragment>
 );
