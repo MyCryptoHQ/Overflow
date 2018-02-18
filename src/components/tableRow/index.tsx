@@ -85,14 +85,11 @@ const AddrWrapper = styled.div`
 `;
 
 const StyledArrow = styled.img`
-  padding: 16px;
+  padding: 8px;
   margin-right: 16px;
+  height: 12px;
+  width: 12px;
   box-sizing: content-box;
-  @media screen and (max-width: 725px) {
-    padding: 8px;
-    height: 12px;
-    width: 12px;
-  }
 `;
 
 const Arrow: React.SFC<{ open: boolean }> = props => {

@@ -15,14 +15,38 @@ const Section = styled.div`
   z-index: 1;
 `;
 
-const HeroImg = styled.div`
+const DemoWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: -64px;
+  margin-top: 121px;
+  background-color: #eff6fb;
   width: 100%;
-  overflow-x: hidden;
 `;
+
+const StyledDemoInfoWrapper = styled.div`
+  margin: 16px 0px;
+  margin-top: 64px;
+  padding: 0px 32px;
+  width: 100%;
+  max-width: 944px;
+  > h4 {
+    text-align: left;
+  }
+  > p {
+    margin: initial;
+  }
+`;
+const DemoInfo: React.SFC = () => (
+  <StyledDemoInfoWrapper>
+    <Display4>Shepherd Demo</Display4>
+    <Subheading marginAuto={true}>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry
+    </Subheading>
+    {/* <PrimaryButton>View Demo</PrimaryButton>
+    <SecondaryButton href="https://github.com/mycryptohq">GitHub</SecondaryButton> */}
+  </StyledDemoInfoWrapper>
+);
 
 export const Hero = () => (
   <React.Fragment>
@@ -34,12 +58,11 @@ export const Hero = () => (
         tooling we've developed over the last year rebuilding{' '}
         <Link href="https://mycrypto.com">MyCrypto.com</Link>.
       </Subheading>
-      {/* <PrimaryButton>View Demo</PrimaryButton>
-      <SecondaryButton href="https://github.com/mycryptohq">GitHub</SecondaryButton> */}
     </Section>
     <Panels />
-    <HeroImg>
+    <DemoInfo />
+    <DemoWrapper>
       <Demo />
-    </HeroImg>
+    </DemoWrapper>
   </React.Fragment>
 );
