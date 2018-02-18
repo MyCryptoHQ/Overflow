@@ -102,7 +102,7 @@ export const Hero = () => (
       <Subheading marginAuto={true}>
         A platform for developer tooling. <br />We’re publishing{' '}
         <Link href="https://www.npmjs.com/~mycrypto-admin"> npm </Link> packages based on internal
-        tooling we've developed over the last year rebuilding{' '}
+        tooling we've developed over the last year of rebuilding{' '}
         <Link href="https://mycrypto.com">MyCrypto.com</Link>.
       </Subheading>
     </Section>
