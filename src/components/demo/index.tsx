@@ -13,15 +13,8 @@ const StyledDemo = styled.div`
   border: 1px solid #e5e5e5;
 `;
 
-const data = [
-  {
-    addr: '0x0a6d9df476577c0d4a24eb50220fad007e444db8',
-    status: null
-  }
-];
-
 export const Demo = () => (
   <StyledDemo>
-    <Table data={data} />
+    <Table />
   </StyledDemo>
 );

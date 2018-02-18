@@ -4,7 +4,6 @@ import { TableRow } from 'components/tableRow';
 const addresses = require('assets/json/addresses.json');
 
 interface PTable {
-  data: any;
   started: boolean;
 }
 

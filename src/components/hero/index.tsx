@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { PrimaryButton, SecondaryButton } from 'components/shared/button';
+import { PrimaryButton, DisabledButton, SecondaryButton } from 'components/shared/button';
 import { Display4, Subheading } from 'components/shared/typography';
 import { Demo } from 'components/demo';
 import { Link } from 'components/shared/link';
@@ -54,21 +54,41 @@ const BtnWrapper = styled.div`
   }
 `;
 
-const DemoInfo: React.SFC = () => (
-  <StyledDemoInfoWrapper>
-    <Copy>
-      <Display4>Shepherd Demo</Display4>
-      <Subheading marginAuto={true}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry
-      </Subheading>
-    </Copy>
-    <FlexSpacer />
-    <BtnWrapper>
-      <PrimaryButton>Start</PrimaryButton>
-      <SecondaryButton>Reset</SecondaryButton>
-    </BtnWrapper>
-  </StyledDemoInfoWrapper>
-);
+class DemoInfo extends React.Component<any, any> {
+  state = {
+    disabled: false
+  };
+
+  toggleDisabled() {
+    this.setState({ disabled: !this.state.disabled });
+  }
+
+  reset() {
+    this.setState({ disabled: false });
+  }
+
+  render() {
+    return (
+      <StyledDemoInfoWrapper>
+        <Copy>
+          <Display4>Shepherd Demo</Display4>
+          <Subheading marginAuto={true}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry
+          </Subheading>
+        </Copy>
+        <FlexSpacer />
+        <BtnWrapper>
+          {this.state.disabled ? (
+            <DisabledButton>Start</DisabledButton>
+          ) : (
+            <PrimaryButton onClick={() => this.toggleDisabled()}>Start</PrimaryButton>
+          )}
+          <SecondaryButton onClick={() => this.reset()}>Reset</SecondaryButton>
+        </BtnWrapper>
+      </StyledDemoInfoWrapper>
+    );
+  }
+}
 
 export const Hero = () => (
   <React.Fragment>

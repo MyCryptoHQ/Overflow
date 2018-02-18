@@ -32,6 +32,16 @@ export const PrimaryButton = styled(Button)`
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
   }
 `;
+export const DisabledButton = styled(Button)`
+  color: white;
+  background-color: #0090ff;
+  background-image: linear-gradient(-180deg, #dbdcdc 0%, #cdd3d6 100%);
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1), inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
+  &:hover {
+    color: white;
+    cursor: not-allowed;
+  }
+`;
 
 export const SecondaryButton = styled(Button)`
   color: #0090ff;
