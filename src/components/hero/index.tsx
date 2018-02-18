@@ -31,10 +31,8 @@ export const Hero = () => (
     <Section>
       <Display4>MyCrypto: Overflow</Display4>
       <Subheading marginAuto={true}>
-        A platform for developer tooling. <br />We’re publishing a series of packages on
-        <Link href="https://www.npmjs.com/~mycrypto-admin"> npm </Link>
-        based on internal tooling we've developed over the last year rebuilding{' '}
-        <Link href="https://mycrypto.com">MyCrypto.com</Link>
+        A platform for developer tooling. <br />We’re publishing <Link href="https://www.npmjs.com/~mycrypto-admin"> npm </Link> packages based on internal tooling we've developed over the last year rebuilding{' '}
+        <Link href="https://mycrypto.com">MyCrypto.com</Link>.
       </Subheading>
       {/* <PrimaryButton>View Demo</PrimaryButton>
       <SecondaryButton href="https://github.com/mycryptohq">GitHub</SecondaryButton> */}

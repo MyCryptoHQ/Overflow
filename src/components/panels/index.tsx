@@ -42,22 +42,28 @@ const Card = styled.div`
 
 export const Panels: React.SFC = () => (
   <StyledWrapper>
+      <Card>
+          <Title>Shepherd</Title>
+          <Subheading>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          </Subheading>
+          <Link href="/">Github</Link>
+      </Card>
     <Card>
-      <Title>Built For Performance</Title>
+      <Title>typ3</Title>
       <Subheading>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Dynamically construct a fully-typed object representation of any given ABI, including
+        methods for encoding, decoding, and calling the contract
       </Subheading>
       <Link href="/">Github</Link>
     </Card>
     <Card>
-      <Title>Built For Performance</Title>
-      <Subheading>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      </Subheading>
+      <Title>typ3-cli</Title>
+      <Subheading>Auto-generate Typescript declaration files from ABI JSON.</Subheading>
       <Link href="/">Github</Link>
     </Card>
     <Card>
-      <Title>Built For Performance</Title>
+      <Title>Drawbridge</Title>
       <Subheading>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </Subheading>
