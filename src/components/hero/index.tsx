@@ -5,6 +5,7 @@ import { Display4, Subheading } from 'components/shared/typography';
 import { Demo } from 'components/demo';
 import { Link } from 'components/shared/link';
 import { Panels } from 'components/panels';
+import { FlexSpacer } from '../shared/flex-spacer';
 
 const Section = styled.div`
   margin-top: 16px;
@@ -25,26 +26,47 @@ const DemoWrapper = styled.div`
 `;
 
 const StyledDemoInfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+  }
   margin: 16px 0px;
   margin-top: 64px;
   padding: 0px 32px;
   width: 100%;
   max-width: 944px;
-  > h4 {
-    text-align: left;
-  }
+`;
+
+const Copy = styled.div`
+  text-align: left;
   > p {
     margin: initial;
   }
+  @media screen and (max-width: 900px) {
+    text-align: center;
+  }
 `;
+
+const BtnWrapper = styled.div`
+  @media screen and (max-width: 900px) {
+    margin-top: 16px;
+  }
+`;
+
 const DemoInfo: React.SFC = () => (
   <StyledDemoInfoWrapper>
-    <Display4>Shepherd Demo</Display4>
-    <Subheading marginAuto={true}>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry
-    </Subheading>
-    {/* <PrimaryButton>View Demo</PrimaryButton>
-    <SecondaryButton href="https://github.com/mycryptohq">GitHub</SecondaryButton> */}
+    <Copy>
+      <Display4>Shepherd Demo</Display4>
+      <Subheading marginAuto={true}>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry
+      </Subheading>
+    </Copy>
+    <FlexSpacer />
+    <BtnWrapper>
+      <PrimaryButton>Start</PrimaryButton>
+      <SecondaryButton>Reset</SecondaryButton>
+    </BtnWrapper>
   </StyledDemoInfoWrapper>
 );
 
