@@ -18,7 +18,7 @@ const config = {
   output: {
     filename: '[name].bundle.js',
     path: paths.output,
-    publicPath: '/'
+    publicPath: './'
   },
   module: {
     rules: [
