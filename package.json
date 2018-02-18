@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@types/react-table": "^6.7.3",
-    "ethereum-blockies": "^0.1.1",
+    "ethereum-blockies": "git+https://github.com/MyCryptoHQ/blockies.git",
     "myc-shepherd": "0.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

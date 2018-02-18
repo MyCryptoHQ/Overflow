@@ -12,3 +12,7 @@ declare module '*.png' {
   const content: any;
   export default content;
 }
+
+declare module 'ethereum-blockies' {
+  export function toDataUrl(url: string): any;
+}

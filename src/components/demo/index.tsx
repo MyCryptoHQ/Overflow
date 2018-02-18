@@ -8,7 +8,6 @@ const StyledDemo = styled.div`
   border-radius: 5px;
   box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
   max-width: 944px;
-  padding: 32px;
   margin: 32px;
   margin-bottom: 96px;
   margin-top: 192px;
