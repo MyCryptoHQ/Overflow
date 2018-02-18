@@ -35,8 +35,8 @@ const WalletWrapper = styled.div`
 
 const StyledBlockie = styled.img`
   border-radius: 5px;
-  height: 48px;
-  width: 48px;
+  height: 36px;
+  width: 36px;
   @media screen and (max-width: 725px) {
     height: 24px;
     width: 24px;

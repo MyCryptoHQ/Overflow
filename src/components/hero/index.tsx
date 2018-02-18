@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import * as img from 'assets/imgs/hero.svg';
+import * as img from 'assets/imgs/triangle-down.svg';
 import { PrimaryButton, SecondaryButton } from 'components/shared/button';
 import { Display4, Subheading } from 'components/shared/typography';
 import { Demo } from 'components/demo';
@@ -31,7 +31,9 @@ export const Hero = () => (
     <Section>
       <Display4>MyCrypto: Overflow</Display4>
       <Subheading marginAuto={true}>
-        A platform for developer tooling. <br />We’re publishing <Link href="https://www.npmjs.com/~mycrypto-admin"> npm </Link> packages based on internal tooling we've developed over the last year rebuilding{' '}
+        A platform for developer tooling. <br />We’re publishing{' '}
+        <Link href="https://www.npmjs.com/~mycrypto-admin"> npm </Link> packages based on internal
+        tooling we've developed over the last year rebuilding{' '}
         <Link href="https://mycrypto.com">MyCrypto.com</Link>.
       </Subheading>
       {/* <PrimaryButton>View Demo</PrimaryButton>
