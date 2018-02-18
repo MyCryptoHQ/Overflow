@@ -5,6 +5,9 @@ const merge = require('webpack-merge');
 const webpack = require('webpack');
 
 const config = merge(common, {
+  output: {
+    publicPath: './'
+  },
   module: {
     rules: [
       {
