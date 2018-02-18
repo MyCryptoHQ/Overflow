@@ -8,7 +8,7 @@ import { Link } from 'components/shared/link';
 import { Panels } from 'components/panels';
 
 const Section = styled.div`
-  margin-top: 32px;
+  margin-top: 16px;
   padding: 0px 32px;
   width: 100%;
   max-width: 784px;
@@ -36,8 +36,8 @@ export const Hero = () => (
         based on internal tooling we've developed over the last year rebuilding{' '}
         <Link href="https://mycrypto.com">MyCrypto.com</Link>
       </Subheading>
-      <PrimaryButton>View Demo</PrimaryButton>
-      <SecondaryButton href="https://github.com/mycryptohq">GitHub</SecondaryButton>
+      {/* <PrimaryButton>View Demo</PrimaryButton>
+      <SecondaryButton href="https://github.com/mycryptohq">GitHub</SecondaryButton> */}
     </Section>
     <Panels />
     <HeroImg>
