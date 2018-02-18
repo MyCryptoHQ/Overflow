@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import * as img from 'assets/imgs/hero.svg';
+import * as img from 'assets/imgs/triangle-down.svg';
 import { PrimaryButton, SecondaryButton } from 'components/shared/button';
 import { Display4, Subheading } from 'components/shared/typography';
 import { Demo } from 'components/demo';
@@ -8,7 +8,7 @@ import { Link } from 'components/shared/link';
 import { Panels } from 'components/panels';
 
 const Section = styled.div`
-  margin-top: 32px;
+  margin-top: 16px;
   padding: 0px 32px;
   width: 100%;
   max-width: 784px;
@@ -31,13 +31,13 @@ export const Hero = () => (
     <Section>
       <Display4>MyCrypto: Overflow</Display4>
       <Subheading marginAuto={true}>
-        A platform for developer tooling. <br />We’re publishing a series of packages on
-        <Link href="https://www.npmjs.com/~mycrypto-admin"> npm </Link>
-        based on internal tooling we've developed over the last year rebuilding{' '}
-        <Link href="https://mycrypto.com">MyCrypto.com</Link>
+        A platform for developer tooling. <br />We’re publishing{' '}
+        <Link href="https://www.npmjs.com/~mycrypto-admin"> npm </Link> packages based on internal
+        tooling we've developed over the last year rebuilding{' '}
+        <Link href="https://mycrypto.com">MyCrypto.com</Link>.
       </Subheading>
-      <PrimaryButton>View Demo</PrimaryButton>
-      <SecondaryButton href="https://github.com/mycryptohq">GitHub</SecondaryButton>
+      {/* <PrimaryButton>View Demo</PrimaryButton>
+      <SecondaryButton href="https://github.com/mycryptohq">GitHub</SecondaryButton> */}
     </Section>
     <Panels />
     <HeroImg>
