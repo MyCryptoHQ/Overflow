@@ -69,23 +69,28 @@ class DemoInfo extends React.Component<any, any> {
 
   render() {
     return (
-      <StyledDemoInfoWrapper>
-        <Copy>
-          <Display4>Shepherd Demo</Display4>
-          <Subheading marginAuto={true}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry
-          </Subheading>
-        </Copy>
-        <FlexSpacer />
-        <BtnWrapper>
-          {this.state.disabled ? (
-            <DisabledButton>Start</DisabledButton>
-          ) : (
-            <PrimaryButton onClick={() => this.toggleDisabled()}>Start</PrimaryButton>
-          )}
-          <SecondaryButton onClick={() => this.reset()}>Reset</SecondaryButton>
-        </BtnWrapper>
-      </StyledDemoInfoWrapper>
+      <React.Fragment>
+        <StyledDemoInfoWrapper>
+          <Copy>
+            <Display4>Shepherd Demo</Display4>
+            <Subheading marginAuto={true}>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry
+            </Subheading>
+          </Copy>
+          <FlexSpacer />
+          <BtnWrapper>
+            {this.state.disabled ? (
+              <DisabledButton>Start</DisabledButton>
+            ) : (
+              <PrimaryButton onClick={() => this.toggleDisabled()}>Start</PrimaryButton>
+            )}
+            <SecondaryButton onClick={() => this.reset()}>Reset</SecondaryButton>
+          </BtnWrapper>
+        </StyledDemoInfoWrapper>
+        <DemoWrapper>
+          <Demo started={this.state.disabled} />
+        </DemoWrapper>
+      </React.Fragment>
     );
   }
 }
@@ -103,8 +108,5 @@ export const Hero = () => (
     </Section>
     <Panels />
     <DemoInfo />
-    <DemoWrapper>
-      <Demo />
-    </DemoWrapper>
   </React.Fragment>
 );

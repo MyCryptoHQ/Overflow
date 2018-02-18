@@ -13,8 +13,8 @@ const StyledDemo = styled.div`
   border: 1px solid #e5e5e5;
 `;
 
-export const Demo = () => (
+export const Demo = (props: any) => (
   <StyledDemo>
-    <Table />
+    <Table started={props.started} />
   </StyledDemo>
 );

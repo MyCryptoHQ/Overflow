@@ -22,22 +22,24 @@ export class Table extends React.Component<PTable> {
     {}
   );
 
-  public componentDidMount() {
-    addresses.addresses.forEach(async (addr: string) => {
-      try {
-        this.setState({
-          [addr]: { status: 'pending' }
-        });
-        const balance = await node.getBalance(addr);
-        const state = store.getState();
-        const { nodeId }: NodeCall = getNodeCallByPayload(state, addr);
-        this.setState({
-          [addr]: { status: 'complete', nodeId: nodeId, balance: balance.toString() }
-        });
-      } catch (e) {
-        this.setState({ [addr]: 'failed' });
-      }
-    });
+  public componentDidUpdate(prev, next) {
+    if (!prev.started && prev !== next) {
+      addresses.addresses.forEach(async (addr: string) => {
+        try {
+          this.setState({
+            [addr]: { status: 'pending' }
+          });
+          const balance = await node.getBalance(addr);
+          const state = store.getState();
+          const { nodeId }: NodeCall = getNodeCallByPayload(state, addr);
+          this.setState({
+            [addr]: { status: 'complete', nodeId: nodeId, balance: balance.toString() }
+          });
+        } catch (e) {
+          this.setState({ [addr]: { status: 'failed' } });
+        }
+      });
+    }
   }
 
   render() {
