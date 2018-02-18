@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import * as img from 'assets/imgs/hero.svg';
 import { PrimaryButton, SecondaryButton } from 'components/shared/button';
 import { Display4, Subheading } from 'components/shared/typography';
+import { Demo } from 'components/demo';
 
 const Section = styled.div`
   margin-top: 80px;
@@ -21,20 +22,6 @@ const HeroImg = styled.div`
   margin-top: -64px;
   width: 100%;
   overflow-x: hidden;
-`;
-
-const Demo = styled.div`
-  width: 100%;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
-  height: 800px;
-  max-width: 944px;
-  padding: 32px;
-  margin: 32px;
-  margin-bottom: 96px;
-  margin-top: 192px;
-  border: 1px solid #e5e5e5;
 `;
 
 export const Hero = () => (
