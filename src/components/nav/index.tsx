@@ -37,9 +37,6 @@ export const Nav = () => (
     </li>
     <FlexSpacer />
     <li>
-      <NavLink href="/">Demo</NavLink>
-    </li>
-    <li>
       <NavLink href="/">Documentation</NavLink>
     </li>
     <li>

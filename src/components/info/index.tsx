@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { LeftAlignCard } from 'components/shared/cards';
-import { Display4, Subheading } from 'components/shared/typography';
+import { Headline, Subheading } from 'components/shared/typography';
 
-const Title = styled(Display4)``;
+const Title = styled(Headline)``;
 
 export const Info = () => (
   <React.Fragment>

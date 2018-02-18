@@ -22,6 +22,8 @@ export const Display4 = styled.h4`
 export const Headline = styled.h5`
   font-size: 24px;
   font-weight: 400;
+  margin: 8px 0px;
+  color: #37343c;
 `;
 
 export const Title = styled.h6`

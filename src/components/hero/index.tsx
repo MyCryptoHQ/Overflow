@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import * as img from 'assets/imgs/hero.svg';
 import { PrimaryButton, SecondaryButton } from 'components/shared/button';
-import { Headline, Subheading } from 'components/shared/typography';
+import { Display4, Subheading } from 'components/shared/typography';
 
 const Section = styled.div`
   margin-top: 80px;
@@ -39,7 +39,7 @@ const Demo = styled.div`
 export const Hero = () => (
   <React.Fragment>
     <Section>
-      <Headline>Automatic Node Balancer</Headline>
+      <Display4>Automatic Node Balancer</Display4>
       <Subheading marginAuto={true}>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is
         the industry's standard
