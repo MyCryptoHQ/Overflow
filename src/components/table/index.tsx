@@ -38,6 +38,7 @@ export class Table extends React.Component<PTable> {
   }
 
   render() {
+    console.log(this.state);
     return (
       <StyledTable>
         {addresses.addresses.map((addr, i) => {
