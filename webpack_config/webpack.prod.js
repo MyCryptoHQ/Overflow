@@ -1,4 +1,7 @@
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const common = require('./webpack.common.js');
+const merge = require('webpack-merge');
 const webpack = require('webpack');
 
 const config = merge(common, {
@@ -6,7 +9,7 @@ const config = merge(common, {
     rules: [
       {
         test: /\.scss$/,
-        use: extractSass.extract({
+        use: ExtractTextPlugin.extract({
           use: [
             {
               loader: 'css-loader'

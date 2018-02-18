@@ -14,10 +14,10 @@ const paths = {
 };
 
 const config = {
-  entry: './src/index.tsx',
+  entry: paths.src + '/index.tsx',
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: paths.output,
     publicPath: '/'
   },
   module: {
