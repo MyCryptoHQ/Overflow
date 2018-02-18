@@ -23,7 +23,7 @@ export class Table extends React.Component<PTable> {
   );
 
   public componentDidUpdate(prev, next) {
-    if (!prev.started && prev !== next) {
+    if (!next.started && prev !== next) {
       addresses.addresses.forEach(async (addr: string) => {
         try {
           this.setState({

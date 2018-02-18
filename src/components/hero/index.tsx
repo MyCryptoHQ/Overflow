@@ -56,7 +56,8 @@ const BtnWrapper = styled.div`
 
 class DemoInfo extends React.Component<any, any> {
   state = {
-    disabled: false
+    disabled: false,
+    reset: false
   };
 
   toggleDisabled() {
@@ -88,7 +89,7 @@ class DemoInfo extends React.Component<any, any> {
           </BtnWrapper>
         </StyledDemoInfoWrapper>
         <DemoWrapper>
-          <Demo started={this.state.disabled} />
+          <Demo started={this.state.disabled} reset={this.state.reset} />
         </DemoWrapper>
       </React.Fragment>
     );
