@@ -27,13 +27,15 @@ const HeroImg = styled.div`
 export const Hero = () => (
   <React.Fragment>
     <Section>
-      <Display4>Automatic Node Balancer</Display4>
+      <Display4>MyCrypto: Overflow</Display4>
       <Subheading marginAuto={true}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is
-        the industry's standard
+        A platform for developer tooling. <br/>We’re publishing a series of packages on
+        <a href="https://www.npmjs.com/~mycrypto-admin"> npm </a>
+        based on internal tooling we've developed over the last year rebuilding{' '}
+        <a href="https://mycrypto.com">MyCrypto.com</a>
       </Subheading>
-      <PrimaryButton>Get Started</PrimaryButton>
-      <SecondaryButton>Documentation</SecondaryButton>
+      <PrimaryButton>View Demo</PrimaryButton>
+        <SecondaryButton><a href="https://github.com/mycryptohq">GitHub</a></SecondaryButton>
     </Section>
     <HeroImg>
       <Demo />
