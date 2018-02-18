@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import './sass/index.scss';
+import 'what-input';
 import App from './app';
 
 const root = document.getElementById('root');
@@ -14,7 +15,7 @@ const render = (Component: () => JSX.Element) => {
   );
 };
 
-render(App);
+render(App as any);
 
 // Webpack Hot Module Replacement API
 if (module.hot) {

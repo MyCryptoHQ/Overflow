@@ -1,6 +1,17 @@
 import * as React from 'react';
-import './app.scss';
+import { Nav } from 'components/nav';
+import { Hero } from 'components/hero';
+import { Info } from 'components/info';
 
-const App = () => <h1>Hello, MyCrypto!</h1>;
-
+class App extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <Nav />
+        <Hero />
+        <Info />
+      </React.Fragment>
+    );
+  }
+}
 export default App;

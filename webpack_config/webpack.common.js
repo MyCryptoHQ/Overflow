@@ -4,6 +4,15 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 
+const paths = {
+  root: path.join(__dirname, '../'),
+  src: path.join(__dirname, '../src'),
+  output: path.join(__dirname, '../dist'),
+  assets: path.join(__dirname, '../src/assets'),
+  static: path.join(__dirname, '../public'),
+  modules: path.join(__dirname, '../node_modules')
+};
+
 const config = {
   entry: './src/index.tsx',
   output: {
@@ -15,7 +24,7 @@ const config = {
     rules: [
       {
         test: /\.tsx?$/,
-        loaders: [
+        use: [
           'react-hot-loader/webpack',
           {
             loader: 'ts-loader',
@@ -23,12 +32,16 @@ const config = {
           }
         ],
         exclude: /node_modules/
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: ['file-loader']
       }
     ]
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.sass', '.css'],
-    symlinks: false
+    modules: [paths.src, paths.modules, paths.root]
   },
   plugins: [
     new HtmlWebpackPlugin({ template: 'public/index.html' }),
