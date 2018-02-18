@@ -8,16 +8,19 @@ import { Panels } from 'components/panels';
 import { FlexSpacer } from '../shared/flex-spacer';
 import { getNodeCallByPayload, NodeCall } from '../../balancer/ducks/nodeBalancer/nodeCalls';
 import { RPCNode, store } from 'balancer';
+import * as logo from 'assets/imgs/myc_logo.svg';
 const addresses = require('assets/json/addresses.json');
 
 let node = RPCNode('');
 const Section = styled.div`
-  margin-top: 16px;
   padding: 0px 32px;
   width: 100%;
   max-width: 784px;
   text-align: center;
   z-index: 1;
+  > h4 {
+    margin-top: 4px;
+  }
 `;
 
 const DemoWrapper = styled.div`
@@ -153,6 +156,7 @@ class DemoInfo extends React.Component<any, any> {
 export const Hero = () => (
   <React.Fragment>
     <Section>
+      <img style={{ height: '64px', width: '64px' }} src={logo} />
       <Display4>MyCrypto: Overflow</Display4>
       <Subheading marginAuto={true}>
         A platform for developer tooling. <br />We’re publishing{' '}
