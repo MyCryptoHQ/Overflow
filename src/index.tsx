@@ -6,6 +6,7 @@ import './sass/index.scss';
 import 'what-input';
 import App from './app';
 import { store } from './store';
+import 'typeface-roboto-mono';
 
 const root = document.getElementById('root');
 const render = (Component: () => JSX.Element) => {

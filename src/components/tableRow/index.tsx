@@ -5,6 +5,7 @@ import { LinearProgress } from 'components/shared/linearProgress';
 import { toDataUrl } from 'ethereum-blockies';
 import * as triangleRight from 'assets/imgs/triangle-right.svg';
 import * as triangleDown from 'assets/imgs/triangle-down.svg';
+import { Code } from 'components/shared/code';
 
 type Status = 'complete' | 'pending' | 'failed' | null;
 
@@ -43,13 +44,22 @@ const StyledBlockie = styled.img`
   }
 `;
 
-const SubComponent = styled.div`
+const SubComponentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #fbfbfb;
   padding: 16px 0px;
   border-bottom: 1px solid #e5e5e5;
 `;
+
+const SubComponent: React.SFC<{
+  balance: any;
+  node: string;
+}> = props => (
+  <SubComponentWrapper>
+    <Code>{JSON.stringify({ node: props.node, balance: props.balance }, null, 2)}</Code>
+  </SubComponentWrapper>
+);
 
 interface PStatus {
   status: Status;
@@ -100,6 +110,8 @@ const Arrow: React.SFC<{ open: boolean }> = props => {
 interface Props {
   addr: string;
   status: Status;
+  balance: any;
+  node: string;
 }
 
 interface State {
@@ -119,7 +131,7 @@ export class TableRow extends React.Component<Props, State> {
   }
 
   render() {
-    const { addr, status } = this.props;
+    const { addr, status, balance, node } = this.props;
     const { open } = this.state;
     return (
       <React.Fragment>
@@ -135,7 +147,7 @@ export class TableRow extends React.Component<Props, State> {
           <FlexSpacer />
           <Status status={status}>{status}</Status>
         </StyledTableRow>
-        {status === 'complete' && open && <SubComponent />}
+        {status === 'complete' && open && <SubComponent node={node} balance={balance} />}
       </React.Fragment>
     );
   }

@@ -18,7 +18,7 @@ let node = RPCNode('');
 
 export class Table extends React.Component<PTable> {
   public state = addresses.addresses.reduce(
-    (accu, curr) => ({ ...accu, [curr]: {"status": 'pending', nodeId: null, balance: null} }),
+    (accu, curr) => ({ ...accu, [curr]: { status: 'pending', nodeId: null, balance: null } }),
     {}
   );
 
@@ -28,7 +28,9 @@ export class Table extends React.Component<PTable> {
         const balance = await node.getBalance(addr);
         const state = store.getState();
         const { nodeId }: NodeCall = getNodeCallByPayload(state, addr);
-        this.setState({ [addr]: {status: "complete", nodeId: nodeId, balance: balance.toString() }});
+        this.setState({
+          [addr]: { status: 'complete', nodeId: nodeId, balance: balance.toString() }
+        });
       } catch (e) {
         this.setState({ [addr]: 'failed' });
       }
@@ -36,16 +38,20 @@ export class Table extends React.Component<PTable> {
   }
 
   render() {
-    console.log(this.state);
     return (
       <StyledTable>
         {addresses.addresses.map((addr, i) => {
-          return i < 15 && <TableRow
-            key={addr}
-            addr={addr}
-            balance={this.state[addr]["balance"]}
-            node={this.state[addr]["nodeId"]}
-            status={this.state[addr]["status"]} />;
+          return (
+            i < 15 && (
+              <TableRow
+                key={addr}
+                addr={addr}
+                balance={this.state[addr]['balance']}
+                node={this.state[addr]['nodeId']}
+                status={this.state[addr]['status']}
+              />
+            )
+          );
         })}
       </StyledTable>
     );

@@ -36,6 +36,10 @@ const config = {
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: ['file-loader']
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        loader: 'file-loader'
       }
     ]
   },
