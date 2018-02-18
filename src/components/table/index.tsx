@@ -28,7 +28,7 @@ export class Table extends React.Component<PTable> {
         console.log("balance", balance.toString());
         this.setState({ addr: 'complete' });
       });
-    }, 0);
+    }, 3000);
   };
 
   render() {
