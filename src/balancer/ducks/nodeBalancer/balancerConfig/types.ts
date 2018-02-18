@@ -7,7 +7,7 @@ export enum BALANCER {
   AUTO = 'BALANCER_AUTO',
   MANUAL = 'BALANCER_MANUAL',
   OFFLINE = 'BALANCER_OFFLINE',
-  ONLINE = 'BALANCER_ONLINE',
+  ONLINE = 'BALANCER_ONLINE'
 }
 
 export interface BalancerConfigState {
@@ -26,7 +26,7 @@ export interface BalancerNetworkSwitchRequestedAction {
 export interface NetworkSwitchSucceededAction {
   type: BALANCER.NETWORK_SWITCH_SUCCEEDED;
   payload: {
-    nodeStats: NodeBalancerState['nodes'];
+    nodeStats: NodeBalancerState['nodeStats'];
     workers: NodeBalancerState['workers'];
   };
 }
@@ -49,6 +49,8 @@ export interface BalancerManualAction {
 }
 
 export type BalancerAction =
+  | SetOfflineAction
+  | SetOnlineAction
   | BalancerFlushAction
   | BalancerAutoAction
   | BalancerManualAction

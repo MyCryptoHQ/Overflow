@@ -9,7 +9,6 @@
     "ethereum-blockies": "git+https://github.com/MyCryptoHQ/blockies.git",
     "ethereumjs-abi": "^0.6.5",
     "ethereumjs-util": "^5.1.4",
-    "hyz-shepherd": "0.0.7",
     "jsonschema": "^1.2.2",
     "randombytes": "^2.0.6",
     "react": "^16.2.0",

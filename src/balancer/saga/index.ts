@@ -64,6 +64,13 @@ const MAX_NODE_CALL_TIMEOUTS = 3;
  */
 
 /**
+window.setTimeout(() => {
+  const testNode = RPCNode('kekekek');
+  for (let index = 0; index < 10; index++) {
+    testNode.ping().then(res => {
+    });
+  }
+}, 1000);
  * Each channel id is a 1-1 mapping of a nodeId
  */
 interface IChannels {
@@ -101,7 +108,7 @@ function* networkSwitch(): SagaIterator {
       isCustom: nodeConfig.isCustom,
       timeoutThresholdMs: 2000,
       currWorkersById: [],
-      maxWorkers: 3,
+      maxWorkers: 4,
       requestFailures: 0,
       requestFailureThreshold: 2,
       supportedMethods: {
@@ -130,7 +137,6 @@ function* networkSwitch(): SagaIterator {
     ) {
       const workerId = `${nodeId}_worker_${workerNumber}`;
       const workerTask: Task = yield spawn(spawnWorker, workerId, nodeId, nodeChannel);
-      console.log(`Worker ${workerId} spawned for ${nodeId}`);
       stats.currWorkersById.push(workerId);
       const worker: IWorker = {
         assignedNode: nodeId,
@@ -142,7 +148,6 @@ function* networkSwitch(): SagaIterator {
 
     return { nodeId, stats, workers };
   }
-  console.log('nodes', nodes);
   const nodeEntries = Object.entries(nodes).map(([nodeId, nodeConfig]) =>
     call(handleAddingNode, nodeId, nodeConfig)
   );
@@ -163,16 +168,17 @@ function* networkSwitch(): SagaIterator {
   );
 
   yield put(networkSwitchSucceeded(networkSwitchPayload));
+
   yield put(setOnline());
 }
 
 function* handleNodeCallRequests(): SagaIterator {
-  const requestChan = yield actionChannel(NODE_CALL.REQUESTED);
+  const requestChan = yield actionChannel(NODE_CALL.REQUESTED, buffers.expanding(50));
   while (true) {
     const { payload }: NodeCallRequestedAction = yield take(requestChan);
     // check if the app is offline
     if (yield select(isOffline)) {
-      yield call(delay, 2000);
+      yield take(BALANCER.ONLINE);
     }
     // wait until its back online
 
@@ -198,6 +204,7 @@ function* handleCallTimeouts({
     const isAllMethodsAvailable: boolean = yield select(getAllMethodsAvailable);
     if (!isAllMethodsAvailable) {
       // if not, set app state offline and flush channels
+
       yield put(setOffline());
     }
   }
@@ -226,24 +233,19 @@ function* checkNodeConnectivity(nodeId: string, poll: boolean = true) {
   const nodeConfig: NodeConfig = yield select(getNodeConfigById, nodeId);
   while (true) {
     try {
-      console.log(`Polling ${nodeId} to see if its online...`);
       const { lb } = yield race({
         lb: apply(nodeConfig.pLib, nodeConfig.pLib.getCurrentBlock),
         to: call(delay, 5000)
       });
       if (lb) {
-        console.log(`${nodeId} online!`);
         return true;
       }
     } catch (error) {
-      console.info(error);
-
       if (!poll) {
         return false;
       }
       yield call(delay, 5000);
     }
-    console.log(`${nodeId} still offline`);
   }
 }
 
@@ -306,13 +308,14 @@ function* spawnWorker(thisId: string, nodeId: string, chan: IChannels[string]) {
       if (timeout || !result) {
         throw createInternalError(`Request timed out for ${nodeId}`);
       }
-
+      console.log('Finished', thisId, payload.callId);
       yield put(nodeCallSucceeded({ result, nodeCall: payload }));
     } catch (error) {
       const e: Error = error;
       if (!(e.name === 'InternalError')) {
         e.name = `NetworkError_${e.name}`;
       }
+      console.error(e);
       yield put(nodeCallTimeout({ ...currentPayload!, nodeId, error }));
     }
   }
@@ -334,7 +337,6 @@ export const nodeCallRequester = (() => {
 
         // make the request to the load balancer
         const networkReq = nodeCallRequested(nodeCall);
-        console.log(networkReq);
         store.dispatch(networkReq);
 
         const unsubscribe = store.subscribe(() => {

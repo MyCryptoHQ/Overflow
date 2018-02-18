@@ -1,19 +1,13 @@
 import { RootState } from 'balancer/ducks';
 import { Omit } from 'balancer/types';
 import { NodeCall } from 'balancer/ducks/nodeBalancer/nodeCalls';
-import {
-  getNodeStats,
-  NodeStatsState,
-} from 'balancer/ducks/nodeBalancer/nodeStats';
+import { getNodeStats, NodeStatsState } from 'balancer/ducks/nodeBalancer/nodeStats';
 import { getWorkerById } from 'balancer/ducks/nodeBalancer/workers';
 
 export const getNodeBalancer = (state: RootState) => state.nodeBalancer;
 
 export type AvailableNodes = {
-  [nodeId in keyof NodeStatsState]: Omit<
-    NodeStatsState[nodeId],
-    'isOffline'
-  > & {
+  [nodeId in keyof NodeStatsState]: Omit<NodeStatsState[nodeId], 'isOffline'> & {
     isOffline: false;
   }
 };
@@ -26,9 +20,8 @@ export const getAvailableNodes = (state: RootState): AvailableNodes => {
   const nodes = getNodeStats(state);
   const initialState: AvailableNodes = {};
 
-  const isAvailable = (
-    node: NodeStatsState[string],
-  ): node is AvailableNodes[string] => !node.isOffline;
+  const isAvailable = (node: NodeStatsState[string]): node is AvailableNodes[string] =>
+    !node.isOffline;
 
   return Object.entries(nodes).reduce((accu, [curNodeId, curNode]) => {
     if (isAvailable(curNode)) {
@@ -50,7 +43,7 @@ export const getAllMethodsAvailable = (state: RootState): boolean => {
     'getTokenBalances',
     'getTransactionCount',
     'getCurrentBlock',
-    'sendRawTx',
+    'sendRawTx'
   ];
 
   const availableNodes = getAvailableNodes(state);
@@ -64,17 +57,17 @@ export const getAllMethodsAvailable = (state: RootState): boolean => {
         // creates a mapping of all supported methods, excluding unsupported ones
         (accu, [rpcMethod, isSupported]) => ({
           ...accu,
-          ...(isSupported ? { [rpcMethod]: true } : {}),
+          ...(isSupported ? { [rpcMethod]: true } : {})
         }),
-        {},
-      ),
+        {}
+      )
     }),
-    {},
+    {}
   );
 
   return allMethods.reduce(
     (allAvailable, curMethod) => allAvailable && availableMethods[curMethod],
-    true,
+    true
   );
 };
 
@@ -86,9 +79,10 @@ export const getAvailableNodeId = (state: RootState, payload: NodeCall) => {
   const availableNodes = getAvailableNodes(state);
 
   const availableNodesArr = Object.entries(availableNodes);
+
   // filter by nodes that can support this method
   const supportsMethod = availableNodesArr.filter(
-    ([_, stats]) => stats.supportedMethods[rpcMethod],
+    ([_, stats]) => stats.supportedMethods[rpcMethod]
   );
 
   // filter nodes that are in the whitelist
@@ -97,37 +91,26 @@ export const getAvailableNodeId = (state: RootState, payload: NodeCall) => {
     : supportsMethod;
 
   // grab the nodes that are not included in min priority
-  const prioritized1 = isWhitelisted.filter(
-    ([nodeId, _]) => !minPriorityNodeList.includes(nodeId),
-  );
+  const prioritized1 = isWhitelisted.filter(([nodeId, _]) => !minPriorityNodeList.includes(nodeId));
 
   // grab the nodes that are included
-  const prioritized2 = isWhitelisted.filter(([nodeId, _]) =>
-    minPriorityNodeList.includes(nodeId),
-  );
+  const prioritized2 = isWhitelisted.filter(([nodeId, _]) => minPriorityNodeList.includes(nodeId));
 
   // prioritize the list by using nodes with most workers free
-  const listToPrioritizeByWorker =
-    prioritized1.length > 0 ? prioritized1 : prioritized2;
+  const listToPrioritizeByWorker = prioritized1.length > 0 ? prioritized1 : prioritized2;
 
   let selectedNode: { nodeId: string; numOfRequestsCurrentProcessing: number };
 
   for (const [nodeId, stats] of listToPrioritizeByWorker) {
-    const numOfRequestsCurrentProcessing = stats.currWorkersById.reduce(
-      (processing, wId) => {
-        const worker = getWorkerById(state, wId);
-        return worker.currentPayload ? processing + 1 : processing;
-      },
-      0,
-    );
+    const numOfRequestsCurrentProcessing = stats.currWorkersById.reduce((processing, wId) => {
+      const worker = getWorkerById(state, wId);
+      return worker.currentPayload ? processing + 1 : processing;
+    }, 0);
 
     if (!selectedNode!) {
       selectedNode = { nodeId, numOfRequestsCurrentProcessing };
     } else {
-      if (
-        selectedNode!.numOfRequestsCurrentProcessing >
-        numOfRequestsCurrentProcessing
-      ) {
+      if (selectedNode!.numOfRequestsCurrentProcessing > numOfRequestsCurrentProcessing) {
         selectedNode = { nodeId, numOfRequestsCurrentProcessing };
       }
     }
