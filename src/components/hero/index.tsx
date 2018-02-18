@@ -4,9 +4,11 @@ import * as img from 'assets/imgs/hero.svg';
 import { PrimaryButton, SecondaryButton } from 'components/shared/button';
 import { Display4, Subheading } from 'components/shared/typography';
 import { Demo } from 'components/demo';
+import { Link } from 'components/shared/link';
+import { Panels } from 'components/panels';
 
 const Section = styled.div`
-  margin-top: 80px;
+  margin-top: 32px;
   padding: 0px 32px;
   width: 100%;
   max-width: 784px;
@@ -29,14 +31,15 @@ export const Hero = () => (
     <Section>
       <Display4>MyCrypto: Overflow</Display4>
       <Subheading marginAuto={true}>
-        A platform for developer tooling. <br/>We’re publishing a series of packages on
-        <a href="https://www.npmjs.com/~mycrypto-admin"> npm </a>
+        A platform for developer tooling. <br />We’re publishing a series of packages on
+        <Link href="https://www.npmjs.com/~mycrypto-admin"> npm </Link>
         based on internal tooling we've developed over the last year rebuilding{' '}
-        <a href="https://mycrypto.com">MyCrypto.com</a>
+        <Link href="https://mycrypto.com">MyCrypto.com</Link>
       </Subheading>
       <PrimaryButton>View Demo</PrimaryButton>
-        <SecondaryButton><a href="https://github.com/mycryptohq">GitHub</a></SecondaryButton>
+      <SecondaryButton href="https://github.com/mycryptohq">GitHub</SecondaryButton>
     </Section>
+    <Panels />
     <HeroImg>
       <Demo />
     </HeroImg>

@@ -37,6 +37,10 @@ const StyledBlockie = styled.img`
   border-radius: 5px;
   height: 48px;
   width: 48px;
+  @media screen and (max-width: 700px) {
+    height: 24px;
+    width: 24px;
+  }
 `;
 
 const SubComponent = styled.div`
@@ -72,11 +76,23 @@ const AddrWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   width: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  > span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 `;
 
 const StyledArrow = styled.img`
   padding: 16px;
   margin-right: 16px;
+  box-sizing: content-box;
+  @media screen and (max-width: 700px) {
+    padding: 8px;
+    height: 12px;
+    width: 12px;
+  }
 `;
 
 const Arrow: React.SFC<{ open: boolean }> = props => {
@@ -115,7 +131,7 @@ export class TableRow extends React.Component<Props, State> {
           <WalletWrapper>
             <Icon addr={addr} />
             <AddrWrapper>
-              {addr}
+              <span>{addr}</span>
               {status === 'pending' && <LinearProgress />}
             </AddrWrapper>
           </WalletWrapper>
