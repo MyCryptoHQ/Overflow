@@ -18,13 +18,13 @@ interface PNavLink {
 }
 const NavLink = styled.a`
   display: block;
-  color: ${(props: PNavLink) => (props.primary && '#0090ff') || 'hsla(209, 16%, 74%, 0.87)'};
+  color: ${(props: PNavLink) => (props.primary && '#007896') || 'hsla(209, 16%, 74%, 0.87)'};
   font-size: 16px;
   font-weight: 500;
   padding: 24px 16px;
   transition: all 0.15s ease-in-out;
   &:hover {
-    color: #0090ff;
+    color: #007896;
   }
 `;
 
