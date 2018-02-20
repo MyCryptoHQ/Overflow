@@ -7,6 +7,7 @@ const StyledPre = styled.pre`
   margin: 0px 32px;
   border-radius: 5px;
   border: 1px solid #e5ecf3;
+  overflow: auto;
 `;
 
 const StyledCode = styled.code`

@@ -32,6 +32,7 @@ const StyledTableRow = styled.div`
 
 const WalletWrapper = styled.div`
   width: 100%;
+  min-width: 0;
 `;
 
 const StyledBlockie = styled.img`
