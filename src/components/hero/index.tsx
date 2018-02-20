@@ -63,7 +63,7 @@ const BtnWrapper = styled.div`
 
 const StyledInlineCode = styled.span`
   font-family: 'Roboto Mono';
-  color: #0090ff;
+  color: #007896;
   background-color: #e5ecf3;
   padding: 2px 6px;
   border-radius: 3px;

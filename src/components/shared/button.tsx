@@ -13,15 +13,15 @@ export const Button = styled.a`
   transition: all 0.15s ease-in-out;
   margin: 0px 8px;
   &:hover {
-    color: #0090ff;
+    color: #007896;
     background-color: #eff6fb;
   }
 `;
 
 export const PrimaryButton = styled(Button)`
   color: white;
-  background-color: #0090ff;
-  background-image: linear-gradient(-180deg, #0090ff 0%, #0085eb 100%);
+  background-color: #007896;
+  background-image: linear-gradient(-180deg, #088fb1 0%, #007896 100%);
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1), inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
   &:hover {
     color: white;
@@ -34,7 +34,7 @@ export const PrimaryButton = styled(Button)`
 `;
 export const DisabledButton = styled(Button)`
   color: white;
-  background-color: #0090ff;
+  background-color: #007896;
   background-image: linear-gradient(-180deg, #dbdcdc 0%, #cdd3d6 100%);
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1), inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
   &:hover {
@@ -44,8 +44,8 @@ export const DisabledButton = styled(Button)`
 `;
 
 export const SecondaryButton = styled(Button)`
-  color: #0090ff;
-  border: 1px solid #0090ff;
+  color: #007896;
+  border: 1px solid #007896;
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1), inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
   &:hover {
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
