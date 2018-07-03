@@ -44,30 +44,54 @@ const Card = styled.div`
 `;
 
 export const Panels: React.SFC = () => (
-  <StyledWrapper>
-    <Card>
-      <Title>shepherd</Title>
-      <Subheading>client-side JSON-RPC node²-balancing</Subheading>
+  <React.Fragment>
+    <StyledWrapper>
+      <Card>
+        <Title>shepherd</Title>
+        <Subheading>client-side JSON-RPC node²-balancing</Subheading>
+        <FlexSpacer />
+        <Link href="https://github.com/MyCryptoHQ/shepherd">GitHub</Link>
+      </Card>
+      <Card>
+        <Title>typ3</Title>
+        <Subheading>typesafe smart contract interaction</Subheading>
+        <FlexSpacer />
+        <Link href="https://github.com/MyCryptoHQ/typ3">GitHub</Link>
+      </Card>
+      <Card>
+        <Title>typ3-cli</Title>
+        <Subheading>auto-generate typescript declaration files</Subheading>
+        <FlexSpacer />
+        <Link href="https://github.com/MyCryptoHQ/typ3-cli">GitHub</Link>
+      </Card>
+      <Card>
+        <Title>drawbridge</Title>
+        <Subheading>SPA release management and verification</Subheading>
+        <FlexSpacer />
+        <Link href="https://github.com/MyCryptoHQ/drawbridge">GitHub</Link>
+      </Card>
+    </StyledWrapper>
+    <StyledWrapper>
+      <Card>
+        <Title>ethereum-blockies-base64</Title>
+        <Subheading>
+          A tiny library for generating blocky identicons as base64 encoded PNGs
+        </Subheading>
+        <FlexSpacer />
+        <Link href="https://github.com/MyCryptoHQ/drawbridge">GitHub</Link>
+      </Card>
+      <Card>
+        <Title>nano-result</Title>
+        <Subheading>A mini result handing library inspired by Rusts' Result enum</Subheading>
+        <FlexSpacer />
+        <Link href="https://github.com/MyCryptoHQ/nano-result">GitHub</Link>
+      </Card>
+      <Card>
+      <Title>eth-exists</Title>
+      <Subheading>A library that helps check for available nodes / providers</Subheading>
       <FlexSpacer />
-      <Link href="https://github.com/MyCryptoHQ/shepherd">GitHub</Link>
+      <Link href="https://github.com/MyCryptoHQ/eth-exists">GitHub</Link>
     </Card>
-    <Card>
-      <Title>typ3</Title>
-      <Subheading>typesafe smart contract interaction</Subheading>
-      <FlexSpacer />
-      <Link href="https://github.com/MyCryptoHQ/typ3">GitHub</Link>
-    </Card>
-    <Card>
-      <Title>typ3-cli</Title>
-      <Subheading>auto-generate typescript declaration files</Subheading>
-      <FlexSpacer />
-      <Link href="https://github.com/MyCryptoHQ/typ3-cli">GitHub</Link>
-    </Card>
-    <Card>
-      <Title>drawbridge</Title>
-      <Subheading>SPA release management and verification</Subheading>
-      <FlexSpacer />
-      <Link href="https://github.com/MyCryptoHQ/drawbridge">GitHub</Link>
-    </Card>
-  </StyledWrapper>
+    </StyledWrapper>
+  </React.Fragment>
 );
