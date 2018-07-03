@@ -19,5 +19,7 @@ npm run start
 # builds the production server app
 npm run build
 ```
-<img width="1440" alt="screen shot 2018-07-03 at 5 46 39 pm" src="https://user-images.githubusercontent.com/7861465/42248006-1c621e16-7ee9-11e8-8c7c-912fd6269937.png">
+
+<img width="1409" alt="screen shot 2018-07-03 at 5 47 47 pm" src="https://user-images.githubusercontent.com/7861465/42248031-3bef45f6-7ee9-11e8-94a1-d515d3849e79.png">
+
 
